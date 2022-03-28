@@ -148,10 +148,6 @@ def cpassword(request):
         return render(request,'change-password.html',{'msg':'old password is not correct'})
     return render(request,'change-password.html')
 
-
-
-    return render(request,'change-password.html')
-
 def bootstrap(request):
     return render(request,'table-bootstrap-basic.html')
 def calender(request):

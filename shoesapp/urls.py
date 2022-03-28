@@ -9,6 +9,11 @@ urlpatterns = [
     path('checkout',views.checkout,name='checkout'),
     path('contact',views.contact,name='contact'),
     path('order',views.order,name='order'),
+    path('login',views.login,name='login'),
+    path('clogout',views.clogout,name='clogout'),
+    path('cpassword',views.cpassword,name='cpassword'),
+    path('cotp',views.cotp,name='cotp'),
+    path('registration',views.registration,name='registration'),
     path('product',views.product,name='product'),
     path('women',views.women,name='women'),
 ]

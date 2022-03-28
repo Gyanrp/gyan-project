@@ -75,6 +75,18 @@
 								<li><a href="{% url 'women' %}">Women</a></li>
 								<li><a href="{% url 'about' %}">About</a></li>
 								<li><a href="{% url 'contact' %}">Contact</a></li>
+								{% if request.session.clientemail %}
+								<li class="has-dropdown">
+									<a href="">{{uid.name}}'s Profile</a>
+									<ul class="dropdown">
+										<li><a href="{% url 'cpassword' %}">Change Password</a></li>
+										<li><a href="{% url 'clogout' %}">Logout</a></li>
+									</ul>
+								</li>
+								{% else %}
+								<li><a href="{% url 'login' %}">Login</a></li>
+								<li><a href="{% url 'registration' %}">Ragistration</a></li>
+								{% endif %}
 								<li class="cart"><a href="{% url 'cart' %}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
 							</ul>
 						</div>
