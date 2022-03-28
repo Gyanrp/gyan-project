@@ -112,7 +112,12 @@ def contact(request):
             msg='Complant is Added'
             return render(request,'contact.html',{'msg':msg})
         return render(request,'contact.html')
-
+def kid(request):
+    try:
+        uid = Register.objects.get(email=request.session['clientemail'])
+        return render(request,'kid.html',{'uid':uid})
+    except:
+        return render(request,'kid.html')
 def about(request):
     return render(request,'about.html')
 def men(request):

@@ -4,6 +4,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('about',views.about,name='about'),
     path('men',views.men,name='men'),
+    path('kid',views.kid,name='kid'),
     path('add',views.add,name='add'),
     path('cart',views.cart,name='cart'),
     path('checkout',views.checkout,name='checkout'),

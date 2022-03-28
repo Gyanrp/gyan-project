@@ -27,14 +27,15 @@ urlpatterns = [
     path('error500',views.error500,name='error500'),    
     path('error503',views.error503,name='error503'),    
     path('lockscreen',views.lockscreen,name='lockscreen'),    
-    path('',views.login,name='login'),
+    path('',views.alogin,name='alogin'),
     path('register',views.register,name='register'), 
     path('logout',views.logout,name='logout'), 
     path('otp',views.otp,name='otp'),
     path('fpassword',views.fpassword,name='fpassword'),    
     path('bootstrap',views.bootstrap,name='bootstrap'),
     path('fotp',views.fotp,name='fotp'),
-    path('cpassword',views.cpassword,name='cpassword')
+    path('cpassword',views.cpassword,name='cpassword'),
+    path('addproduct',views.addproduct,name='addproduct')
     
 
 

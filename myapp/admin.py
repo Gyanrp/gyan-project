@@ -1,12 +1,15 @@
 from django.contrib import admin
-from . import models
+from .models import *
 
 # Register your models here.
 
 # admin.site.register(User)
 
-#admin.site.register(User)
+admin.site.register(Category)
 
-@admin.register(models.User)
+@admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['name','email','mobile']
+@admin.register(product)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['name','brand','price','active']

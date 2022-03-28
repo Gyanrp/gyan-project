@@ -1,11 +1,4 @@
-from ast import Try
-from atexit import register
-from cgitb import html
-import email
-from glob import glob
-from tempfile import tempdir
-from unicodedata import name
-from urllib import request
+from email.mime import image
 from django.shortcuts import redirect,render
 from .models import *
 from django.conf import settings
@@ -19,7 +12,7 @@ def aindex(request):
     uid = User.objects.get(email=request.session['email'])
     return render(request,'aindex.html',{'uid':uid})
 
-def login(request):
+def alogin(request):
     try:
         User.objects.get(email=request.session['email'])
         return redirect('aindex')
@@ -34,7 +27,6 @@ def login(request):
             except:
                 return render(request,'page-register.html',{'msg' : 'email is not register plz register your email'})
         return render(request,'page-login.html')
-    return render(request,'page-login.html',{'msg':'First You have To login'})
 
 
 def register(request):
@@ -89,7 +81,7 @@ def otp(request):
         return render(request,'otp.html',{'otp':request.POST['otp'],'msg':'incorrect otp'})
 def logout(request):
     del request.session['email']
-    return redirect('login')
+    return redirect('alogin')
 
 def fpassword(request):
     if request.method == 'POST':
@@ -148,6 +140,26 @@ def cpassword(request):
         return render(request,'change-password.html',{'msg':'old password is not correct'})
     return render(request,'change-password.html')
 
+def addproduct(request):
+    uid = User.objects.get(email=request.session['email'])
+    categories = Category.objects.all()
+    if request.method == 'POST':
+        cate = Category.objects.get(id=request.POST['category'])
+        product.objects.create(
+            uid = uid,
+            category = cate,
+            name = request.POST['name'],
+            brand = request.POST['brand'],
+            price = request.POST['price'],
+            image = request.FILES['img'],
+            description = request.POST['des'],
+        )
+        msg = 'product Added'
+        return render(request,'add-product.html',{'uid':uid,'categories':categories,'msg':msg})
+    return render(request,'add-product.html',{'uid':uid,'categories':categories})
+
+def index2(request):
+    return render(request,'index2.html')
 def bootstrap(request):
     return render(request,'table-bootstrap-basic.html')
 def calender(request):
@@ -180,8 +192,7 @@ def validation(request):
     return render(request,'form-validation-jquery.html')
 def wizard(request):
     return render(request,'form-wizard.html')
-def index2(request):
-    return render(request,'index2.html')
+
 def layout(request):
     return render(request,'layout-blank.html')
 def jqvmap(request):
