@@ -5,4 +5,8 @@ from . import models
 # admin.site.register(product)
 @admin.register(models.Register)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['name','email','mobile','gender']
+    list_display = ['name','email','mobile','address']
+
+@admin.register(models.Contact)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['name','email','message','enq_time']

@@ -20,7 +20,6 @@ from django.db import models
 class Register(models.Model):
     name=models.CharField(max_length=20)
     mobile=models.CharField(max_length=13)
-    gender=models.CharField(max_length=6)
     email=models.EmailField(unique=True)
     address=models.TextField(max_length=60)
     password=models.CharField(max_length=20)
@@ -29,4 +28,11 @@ class Register(models.Model):
     def __str__(self):
         return self.name
 
-
+class Contact(models.Model):
+    name=models.CharField(max_length=30)
+    email=models.EmailField()
+    message=models.TextField(max_length=200)
+    enq_time = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.name

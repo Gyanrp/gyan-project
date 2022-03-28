@@ -86,14 +86,40 @@ def cpassword(request):
         return render(request,'cpassword.html',{'msg':'old password is not correct'})
     return render(request,'cpassword.html')
 
+def contact(request):
+    try:
+        uid = Register.objects.get(email=request.session['clientemail'])
+        if request.method == 'POST':
+            Contact.objects.create(
+                name=request.POST['name'],
+                mobile=request.POST['mobile'],
+                email=request.POST['email'],
+                city=request.POST['city'],
+                des=request.POST['des']
+            )
+            msg='Complant is Added'
+            return render(request,'contact.html',{'msg':msg})
+        return render(request,'contact.html',{'uid':uid})
+    except:
+        if request.method == 'POST':
+            Contact.objects.create(
+                name=request.POST['name'],
+                mobile=request.POST['mobile'],
+                email=request.POST['email'],
+                city=request.POST['city'],
+                des=request.POST['des']
+            )
+            msg='Complant is Added'
+            return render(request,'contact.html',{'msg':msg})
+        return render(request,'contact.html')
+
 def about(request):
     return render(request,'about.html')
 def men(request):
     return render(request,'men.html')
 def checkout(request):
     return render(request,'checkout.html')
-def contact(request):
-    return render(request,'contact.html')
+
 def order(request):
     return render(request,'order-complete.html')
 def product(request):
