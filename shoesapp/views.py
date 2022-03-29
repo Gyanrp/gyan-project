@@ -87,27 +87,26 @@ def cpassword(request):
     return render(request,'cpassword.html')
 
 def contact(request):
+
     try:
         uid = Register.objects.get(email=request.session['clientemail'])
         if request.method == 'POST':
             Contact.objects.create(
                 name=request.POST['name'],
-                mobile=request.POST['mobile'],
                 email=request.POST['email'],
-                city=request.POST['city'],
-                des=request.POST['des']
+                subject=request.POST['subject'],
+                message=request.POST['message']
             )
             msg='Complant is Added'
-            return render(request,'contact.html',{'msg':msg})
+            return render(request,'contact.html',{'msg':msg,'uid':uid})
         return render(request,'contact.html',{'uid':uid})
     except:
         if request.method == 'POST':
             Contact.objects.create(
                 name=request.POST['name'],
-                mobile=request.POST['mobile'],
                 email=request.POST['email'],
-                city=request.POST['city'],
-                des=request.POST['des']
+                subject=request.POST['subject'],
+                message=request.POST['message']
             )
             msg='Complant is Added'
             return render(request,'contact.html',{'msg':msg})

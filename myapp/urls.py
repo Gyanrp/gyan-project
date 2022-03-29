@@ -19,6 +19,7 @@ urlpatterns = [
     path('validation',views.validation,name='validation'),
     path('wizard',views.wizard,name='wizard'),
     path('index2',views.index2,name='index2'),
+    path('productadmin',views.productadmin,name='productadmin'),
     path('layout',views.layout,name='layout'),
     path('jqvmap',views.jqvmap,name='jqvmap'),
     path('error400',views.error400,name='error400'),    

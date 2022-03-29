@@ -1,5 +1,6 @@
 import email
 from msilib.schema import Class
+from pickle import TRUE
 from unicodedata import name
 from django.db import models
 
@@ -17,6 +18,7 @@ class Register(models.Model):
 class Contact(models.Model):
     name=models.CharField(max_length=30)
     email=models.EmailField()
+    subject=models.CharField(max_length=50,null=True)
     message=models.TextField(max_length=200)
     enq_time = models.DateTimeField(auto_now_add=True)
     

@@ -157,7 +157,9 @@ def addproduct(request):
         msg = 'product Added'
         return render(request,'add-product.html',{'uid':uid,'categories':categories,'msg':msg})
     return render(request,'add-product.html',{'uid':uid,'categories':categories})
-
+def productadmin(request):
+    
+    return render(request,'product-admin.html')
 def index2(request):
     return render(request,'index2.html')
 def bootstrap(request):
